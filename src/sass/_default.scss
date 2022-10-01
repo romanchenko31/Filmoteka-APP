@@ -1,0 +1,16 @@
+html,  
+body{
+    font-size: 10px;
+    font-family: var(--main-font);   
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style: none;
+      }
+    }
+    a{
+      text-decoration: none;
+    }
+  }

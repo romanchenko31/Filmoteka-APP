@@ -13,35 +13,43 @@ let results = [];
 let genres = [];
 let arrGenresName = [];
 
-
 let arrPages = [1, 2, 3, 4, 5];
 let firstPage = 1;
 let lastPages = 0;
-
+let currentPagePagination;
 
 movieTrendAPI();
 inputQuerySearch();
 increaseMarcupPagination();
 arrowLeftDisabled();
+addStyleCurrentButton();
 
 form.addEventListener('click', (e) => {
+  currentPagePagination.classList.remove('buttonChecked');
+
   if (e.target.value === 'button') {
     trendingAPI.page = e.target.id;
-    queryAPI.page = e.target.id;
-    if (e.target.id === '7') {
+    queryAPI.page = e.target.id;  
+
+    currentPagePagination = e.target;
+    e.target.classList.add('buttonChecked');
+
+    if (e.target.id === 'right') {
       form.innerHTML = '';
       increaseMarcupPagination();
       firstPage = lastPages - 4;
       trendingAPI.page = firstPage;
       queryAPI.page = firstPage;
+      addStyleCurrentButton();
     }
     
-    if (e.target.id === '6') {
+    if (e.target.id === 'left') {
       form.innerHTML = '';
       decreaseMarcupPagination();
       lastPages = firstPage + 4;
       trendingAPI.page = firstPage;
       queryAPI.page = firstPage;
+      addStyleCurrentButton();
     }
     if (queryAPI.querySearch === '') {
       movieTrendAPI();  
@@ -73,10 +81,11 @@ function inputQuerySearch() {
         queryAPI.page = 1;     
         movieSearchAPI();
         reloadPagination();
+       addStyleCurrentButton();
         
       } else {
-        movieSearchAPI();
-      }
+         movieSearchAPI();
+       }
     } else {
       trendingAPI.page = 1;
       movieTrendAPI();
@@ -111,13 +120,14 @@ function decreaseMarcupPagination() {
 }
 
 function marcupArrowButton() {
-  form.insertAdjacentHTML('afterbegin', `<button id=6 class='arrowLeft' type="button" value="button"><-</button>`);
-  form.insertAdjacentHTML('beforeend', `<button class='arrowRight' id=7 type="button" value="button">-></button>`);
+  form.insertAdjacentHTML('afterbegin', `<button id='left' class='arrowLeft' type="button" value="button"></button>`);
+  form.insertAdjacentHTML('beforeend', `<button class='arrowRight' id='right' type="button" value="button"></button>`);
 }
 
 function arrowLeftDisabled() {
   if (firstPage === 1) {
-    form.firstChild.disabled= true;
+    form.firstChild.disabled = true;
+    form.firstChild.classList.add('arrowLeftDisabled');
   }
 }
 
@@ -154,7 +164,10 @@ function addKeyYear(result) {
   result.year = `${year.getFullYear()}`;
 }
 
-
+function addStyleCurrentButton(){
+  currentPagePagination = form.firstChild.nextElementSibling;
+  currentPagePagination.classList.add('buttonChecked');
+}
 
 
 

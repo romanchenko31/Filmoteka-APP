@@ -3,14 +3,14 @@ import {movieSearchAPI, queryAPI} from '..//js/searchQuery';
 const form = document.querySelector('.form-button');
 
 
-//START varible phone pagination
+//START variable phone pagination
 const amountPagesPagination = 5;
 let firstPage = 1;
 let lastPages = 0;
 let currentPagePagination;
-// END varible phone pagination
+// END variable phone pagination
 
-//START varible Desktop pagination
+//START variable Desktop pagination
 const amountNumbersFirstMoreButton = 11;
 const amountNumbersSecondMoreButton = 2;
 let arrayNumbersButtonFirstMore = [];
@@ -21,7 +21,7 @@ let nextButtonPageAfterFirstMore;
 let middleLastPageButton;
 let secondMoreButton;
 let lastPagePagination;
-// END varible desktop pagination
+// END variable desktop pagination
 
 if (window.innerWidth < 768) {
   phonePagination();

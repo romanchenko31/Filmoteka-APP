@@ -7,9 +7,14 @@ class queryGeneralAPI{
     }
 
     async generalAPI() {
+      try {
         const fetchGeneralAPI = await fetch(`${this.url}search/movie?api_key=${this.keyAPI}&language=en-US&page=${this.page}&include_adult=false&query=${this.query}`);
         const results = fetchGeneralAPI.json();
         return results;
+      } catch {
+            console.log('error');
+        }
+       
     }
 
     set querySearch(value) {

@@ -6,7 +6,6 @@ class trendingMovies {
     }
 
     async trendMovies() {
-        // console.log(this.page);
         const fetchTrend = await fetch(`${this.url}trending/movie/week?api_key=${this.keyAPI}&page=${this.page}`);
         const results = await fetchTrend.json();
         return results;

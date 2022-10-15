@@ -21,6 +21,7 @@
     "@parcel/resolver-default": "^2.7.0",
     "animate.css": "^4.1.1",
     "animateme": "^2.4.1",
+    "debounce": "^1.2.1",
     "modern-normalize": "^1.1.0",
     "parcel-plugin-handlebars": "^0.4.4",
     "parcel-plugin-svg-sprite": "^1.4.1",

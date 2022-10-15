@@ -1,4 +1,4 @@
-class queryGeneralAPI{ 
+class queryGeneralAPI{
     constructor() {
         this.page = 1;
         this.query = '';
@@ -7,7 +7,7 @@ class queryGeneralAPI{
     }
 
     async generalAPI() {
-      try {
+        try {
         const fetchGeneralAPI = await fetch(`${this.url}search/movie?api_key=${this.keyAPI}&language=en-US&page=${this.page}&include_adult=false&query=${this.query}`);
         const results = fetchGeneralAPI.json();
         return results;
@@ -24,15 +24,6 @@ class queryGeneralAPI{
     get querySearch() {
         return this.query;
     }
-
-    incrementPage() {
-        this.page += 1;
-    }
-
-    decrementPage() {
-        this.page -= 1;
-    }
-
 }
 
 

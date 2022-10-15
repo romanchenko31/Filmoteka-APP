@@ -6,7 +6,7 @@ const form = document.querySelector('.form-button');
 //START variable phone pagination
 const amountPagesPagination = 5;
 let firstPage = 1;
-let lastPages = 0;
+let lastPage = 0;
 let currentPagePagination;
 // END variable phone pagination
 
@@ -48,8 +48,8 @@ function marcupArrowButton() {
 
 function increaseMarcupPagination() {
   for (let i = 1; i <= amountPagesPagination; i += 1){
-    lastPages += 1;
-    form.insertAdjacentHTML('beforeend', `<button id=${lastPages} type="button" value="button">${lastPages}</button>`);
+    lastPage += 1;
+    form.insertAdjacentHTML('beforeend', `<button id=${lastPage} type="button" value="button">${lastPage}</button>`);
   }
   marcupArrowButton();
 } 
@@ -66,7 +66,7 @@ function decreaseMarcupPagination() {
 function reloadPagination() {
   form.innerHTML = '';
   if (window.innerWidth < 768) {    
-    lastPages = 0;
+    lastPage = 0;
     increaseMarcupPagination();
     firstPage = 1;
     arrowLeftDisabled();
@@ -74,7 +74,6 @@ function reloadPagination() {
       firstPagePagination = 1;
       marcupButtonDesctop(firstPagePagination);
     }
-
 }
 
 function phonePagination() {
@@ -92,7 +91,7 @@ function phonePagination() {
       if (e.target.id === 'right') {
         form.innerHTML = '';
         increaseMarcupPagination();
-        firstPage = lastPages - 4;
+        firstPage = lastPage - 4;
         trendingAPI.page = firstPage;
         queryAPI.page = firstPage;
         addStyleCurrentButton();
@@ -100,7 +99,7 @@ function phonePagination() {
       if (e.target.id === 'left') {
         form.innerHTML = '';
         decreaseMarcupPagination();
-        lastPages = firstPage + 4;
+        lastPage = firstPage + 4;
         trendingAPI.page = firstPage;
         queryAPI.page = firstPage;
         addStyleCurrentButton();

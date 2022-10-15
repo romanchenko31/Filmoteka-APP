@@ -1,5 +1,5 @@
 import trendingMovies from '..//js/trendMoviesAPI';
-import genersApi from '..//js/genersApi.js';
+import getGenresApi from '..//js/genersApi.js';
 import img from '..//template/img.hbs';
 const trendingAPI = new trendingMovies(); 
 const filmList = document.querySelector('.film-list');
@@ -16,7 +16,7 @@ function movieTrendAPI() {
 }
 
 function addKeyGeners(results) {
-  genersApi().then(value => {
+  getGenresApi().then(value => {
     genres = [...value.genres];
     results.map(result => {
       genres.map(genre => {

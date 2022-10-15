@@ -9,12 +9,16 @@ class queryGeneralAPI{
     async generalAPI() {
       try {
         const fetchGeneralAPI = await fetch(`${this.url}search/movie?api_key=${this.keyAPI}&language=en-US&page=${this.page}&include_adult=false&query=${this.query}`);
-        const results = fetchGeneralAPI.json();
-        return results;
+          if (fetchGeneralAPI.ok === true) {
+            const results = fetchGeneralAPI.json();
+            return results;
+          } else {
+              alert('Данная страница пустая');
+          }    
+          console.log(fetchGeneralAPI);
       } catch {
-            console.log('error');
+          console.error('error');
         }
-       
     }
 
     set querySearch(value) {
@@ -28,11 +32,10 @@ class queryGeneralAPI{
     incrementPage() {
         this.page += 1;
     }
-
+    
     decrementPage() {
         this.page -= 1;
     }
-
 }
 
 

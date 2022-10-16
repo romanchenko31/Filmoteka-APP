@@ -3,12 +3,12 @@ import {movieSearchAPI, queryAPI} from '..//js/searchQuery';
 const form = document.querySelector('.form-button');
 
 
-//START variable phone pagination
+//START variable mobile pagination
 const amountPagesPagination = 5;
 let firstPage = 1;
 let lastPage = 0;
 let currentPagePagination;
-// END variable phone pagination
+// END variable mobile pagination
 
 //START variable Desktop pagination
 const amountNumbersFirstMoreButton = 11;
@@ -21,12 +21,12 @@ let nextButtonPageAfterFirstMore;
 let middleLastPageButton;
 let secondMoreButton;
 let lastPagePagination;
-// END variable desktop pagination
+// END variable Desktop pagination
 
 if (window.innerWidth < 768) {
   phonePagination();
 } else {
-    desktopPagination();
+  desktopPagination();
 }
 
 function addStyleCurrentButton() {
@@ -82,8 +82,7 @@ function phonePagination() {
   addStyleCurrentButton();
   form.addEventListener('click', (e) => {
     if (e.target.value === 'button') {
-      trendingAPI.page = e.target.id;
-      queryAPI.page = e.target.id;  
+      let currentPage = e.target.id;  
       currentPagePagination.classList.remove('buttonChecked');
       currentPagePagination = e.target;
       e.target.classList.add('buttonChecked');
@@ -92,22 +91,20 @@ function phonePagination() {
         form.innerHTML = '';
         increaseMarcupPagination();
         firstPage = lastPage - 4;
-        trendingAPI.page = firstPage;
-        queryAPI.page = firstPage;
+        currentPage = firstPage;
         addStyleCurrentButton();
       }  
       if (e.target.id === 'left') {
         form.innerHTML = '';
         decreaseMarcupPagination();
         lastPage = firstPage + 4;
-        trendingAPI.page = firstPage;
-        queryAPI.page = firstPage;
+        currentPage = firstPage;
         addStyleCurrentButton();
       }
       if (queryAPI.querySearch === '') {
-        movieTrendAPI();  
+        movieTrendAPI(currentPage);  
       } else {
-          movieSearchAPI();
+        movieSearchAPI(currentPage);
       }
     }
   })
@@ -118,30 +115,29 @@ function  desktopPagination() {
   form.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.value === 'button') {
+      let currentPage = e.target.id;
       currentPagePagination.classList.remove('buttonChecked');
       currentPagePagination = e.target;
       e.target.classList.add('buttonChecked');
-      trendingAPI.page = e.target.id;
-      queryAPI.page = e.target.id;
     
       if (e.target.id === 'right') {
         firstPagePagination = lastPagePagination + 1;
         form.innerHTML = '';
         marcupButtonDesctop(firstPagePagination);
-        trendingAPI.page = firstPagePagination;
-        queryAPI.page = firstPagePagination;
+        currentPage = firstPagePagination;
+
       }  
       if (e.target.id === 'left') {    
         firstPagePagination = firstPagePagination - 20;
         form.innerHTML = '';
         marcupButtonDesctop(firstPagePagination);
-        trendingAPI.page = firstPagePagination;
-        queryAPI.page = firstPagePagination;
+        currentPage = firstPagePagination;
+
       }  
       if (queryAPI.querySearch === '' &&  e.target.className !== 'secondMore' && e.target.className !== 'moreOne') {
-        movieTrendAPI();  
+        movieTrendAPI(currentPage);  
       } else if(e.target.className !== 'secondMore' && e.target.className !== 'moreOne'){
-          movieSearchAPI();
+          movieSearchAPI(currentPage);
         } 
     }
   })

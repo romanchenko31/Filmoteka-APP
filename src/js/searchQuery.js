@@ -11,7 +11,7 @@ function inputQuerySearch() {
     if (queryAPI.querySearch !== '') {      
       if (queryAPI.page !== 1) {
         queryAPI.page = 1;     
-        movieSearchAPI();
+        movieSearchAPI(queryAPI.page);
         reloadPagination(); 
         addStyleCurrentButton();
       } else {
@@ -19,15 +19,15 @@ function inputQuerySearch() {
         }
     } else {
         trendingAPI.page = 1;
-        movieTrendAPI();
+        movieTrendAPI(trendingAPI.page);
         reloadPagination();
         addStyleCurrentButton();
       } 
   }),1000)); 
 } 
 
-function movieSearchAPI() {
-  queryAPI.generalAPI().then(value => {   
+function movieSearchAPI(page) {
+  queryAPI.generalAPI(page).then(value => {   
     results = value.results;
       addKeyGeners(results);
   })  

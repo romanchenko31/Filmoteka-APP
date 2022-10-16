@@ -7,9 +7,10 @@ const filmList = document.querySelector('.film-list');
 let results = [];
 let genres = [];
 let arrGenresName = [];
+let currentPage = 1;
 
-function movieTrendAPI() {
-  trendingAPI.trendMovies().then(value => { 
+function movieTrendAPI(page) {
+  trendingAPI.trendMovies(page).then(value => { 
   results = [...value.results];    
   addKeyGeners(results); 
 });
@@ -47,6 +48,6 @@ function addKeyYear(result) {
   result.year = `${year.getFullYear()}`;
 }
 
-movieTrendAPI();
+movieTrendAPI(currentPage);
 
 export { movieTrendAPI, trendingAPI, addKeyGeners };

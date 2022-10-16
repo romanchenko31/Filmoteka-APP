@@ -72,7 +72,7 @@ function reloadPagination() {
     arrowLeftDisabled();
   } else {
       firstPagePagination = 1;
-      marcupButtonDesctop(firstPagePagination);
+      marcupButtonDesktop(firstPagePagination);
     }
 }
 
@@ -111,7 +111,7 @@ function phonePagination() {
 }
 
 function  desktopPagination() {
-  marcupButtonDesctop(firstPagePagination);
+  marcupButtonDesktop(firstPagePagination);
   form.addEventListener('click', (e) => {
     e.preventDefault();
     if (e.target.value === 'button') {
@@ -123,14 +123,14 @@ function  desktopPagination() {
       if (e.target.id === 'right') {
         firstPagePagination = lastPagePagination + 1;
         form.innerHTML = '';
-        marcupButtonDesctop(firstPagePagination);
+        marcupButtonDesktop(firstPagePagination);
         currentPage = firstPagePagination;
 
       }  
       if (e.target.id === 'left') {    
         firstPagePagination = firstPagePagination - 20;
         form.innerHTML = '';
-        marcupButtonDesctop(firstPagePagination);
+        marcupButtonDesktop(firstPagePagination);
         currentPage = firstPagePagination;
 
       }  
@@ -143,7 +143,7 @@ function  desktopPagination() {
   })
 }
 
-function marcupButtonDesctop(firstPagePagination) {
+function marcupButtonDesktop(firstPagePagination) {
   firstMorePage = firstPagePagination;
   form.insertAdjacentHTML('beforeend', `<button value='button' id=${firstMorePage}>${firstMorePage}</button>`);
   form.insertAdjacentHTML('beforeend', `<button class='moreOne'>...</button>`);

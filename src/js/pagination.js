@@ -119,21 +119,21 @@ function  desktopPagination() {
       currentPagePagination.classList.remove('buttonChecked');
       currentPagePagination = e.target;
       e.target.classList.add('buttonChecked');
-    
+      
       if (e.target.id === 'right') {
         firstPagePagination = lastPagePagination + 1;
         form.innerHTML = '';
         marcupButtonDesktop(firstPagePagination);
         currentPage = firstPagePagination;
-
-      }  
+      }
+      
       if (e.target.id === 'left') {    
         firstPagePagination = firstPagePagination - 20;
         form.innerHTML = '';
         marcupButtonDesktop(firstPagePagination);
         currentPage = firstPagePagination;
-
       }  
+      
       if (queryAPI.querySearch === '' &&  e.target.className !== 'secondMore' && e.target.className !== 'moreOne') {
         movieTrendAPI(currentPage);  
       } else if(e.target.className !== 'secondMore' && e.target.className !== 'moreOne'){

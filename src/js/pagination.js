@@ -119,36 +119,21 @@ function  desktopPagination() {
       currentPagePagination.classList.remove('buttonChecked');
       currentPagePagination = e.target;
       e.target.classList.add('buttonChecked');
-<<<<<<< HEAD
-      trendingAPI.page = e.target.id;
-      queryAPI.page = e.target.id;   
-=======
-    
->>>>>>> main
+      
       if (e.target.id === 'right') {
         firstPagePagination = lastPagePagination + 1;
         form.innerHTML = '';
         marcupButtonDesktop(firstPagePagination);
-<<<<<<< HEAD
-        trendingAPI.page = firstPagePagination;
-        queryAPI.page = firstPagePagination;
-=======
         currentPage = firstPagePagination;
-
->>>>>>> main
-      }  
+      }
+      
       if (e.target.id === 'left') {    
         firstPagePagination = firstPagePagination - 20;
         form.innerHTML = '';
         marcupButtonDesktop(firstPagePagination);
-<<<<<<< HEAD
-        trendingAPI.page = firstPagePagination;
-        queryAPI.page = firstPagePagination;
-=======
         currentPage = firstPagePagination;
-
->>>>>>> main
       }  
+      
       if (queryAPI.querySearch === '' &&  e.target.className !== 'secondMore' && e.target.className !== 'moreOne') {
         movieTrendAPI(currentPage);  
       } else if(e.target.className !== 'secondMore' && e.target.className !== 'moreOne'){

@@ -1,0 +1,37 @@
+.form-button{
+    display: flex;
+    justify-content: center;
+    button{
+        background: transparent;
+        width: 40px;
+        height: 40px;
+        border: none;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 1.2rem;
+        line-height: 1.6rem;
+        color: var(--color-black);
+    }
+    .arrowLeft,
+    .arrowRight,
+    .arrowLeftDisabled{
+      content: ''; 
+      background-repeat: no-repeat;
+      background-size: 16px;
+      background-position: center;      
+    }
+    .arrowLeft{
+      background-image: url(../images/arrow-left.svg);
+    }
+    .arrowRight{
+      background-image: url(../images/arrow-right.svg);
+    }
+    .arrowLeftDisabled {
+      background-image: url(../images/arrow-leftDesabled.svg);
+    }
+    .buttonChecked{
+        background-color: var(--borderOrange-color);
+        color: var(--color-white);
+        border-radius: 0.5rem;
+    }
+}

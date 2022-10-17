@@ -138,3 +138,16 @@ header{
     transform: scale(0.7);
   }
 }
+
+.header{
+  width: 280px;
+  margin: 0 auto;
+  
+  @media screen and(min-width:768px)and(max-width:1023px) {
+    width: 620px;
+  }
+  
+  @media screen and(min-width:1024px){
+    width: 900px;
+  }
+}

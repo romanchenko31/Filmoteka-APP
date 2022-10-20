@@ -1,5 +1,5 @@
 {{#each this}}
-<li class='film-gallery'>
+<li id={{id}} class='film-gallery'>
     {{#if poster_path}}
     <img src='https://image.tmdb.org/t/p/w500{{poster_path}}' alt='{{title}}' data-action={{id}} class='img-card' />
     {{else}}
@@ -16,3 +16,4 @@
     </div>
 </li>
 {{/each}}
+

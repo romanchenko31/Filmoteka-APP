@@ -1,0 +1,43 @@
+<button class="close"></button>
+  <img src="https://image.tmdb.org/t/p/w500{{poster_path}}">
+  <div class="description-card-film">
+    <h1 class="title">{{title}}</h1>
+    <div class="description-movie">
+      <ul class="description">
+        <li class="item">Vote / Votes</li>
+        <li class="item">Popularity</li>
+        <li class="item"></li>
+        <li class="item">Original Title</li>
+        <li class="item">Genre</li>
+      </ul>
+      <ul>
+        <li class="item"><span class="vote">{{vote_average}}</span>/ {{vote_count}}</li>
+        <li class="item">{{popularity}}</li>
+        <li class="item">{{original_title}}</li>
+        <li class="item">
+          <ul class="geners">
+            {{#each genres}}
+            <li class="item">{{name}}</li>
+            {{/each}}
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <h2>About</h2>
+    <p class='movie-discripsh-content'>{{overview}}</p>
+    <ul class="button">
+      <li class="item"><button>add to Watched</button></li>
+      <li class="item"><button>add to queue</button></li>
+    </ul>
+    </ul>
+  </div>
+
+
+
+
+
+
+
+
+
+

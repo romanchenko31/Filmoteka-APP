@@ -9,7 +9,7 @@ function modalShow() {
   filmList.addEventListener('click', async (e) => {  
     if (e.target.closest('li')) {
       const id = e.target.closest('li').id;
-      const getMoviesData = await setIdModalWindow.getMoviesId(id);
+      const getMoviesData = await setIdModalWindow.getMoviesById(id);
       getMoviesData.popularity = getMoviesData.popularity.toFixed(1);
       const marcupModalWindow = modalWindowHendelbar(getMoviesData);
       divModalWindow.parentElement.classList.add('backdrop');

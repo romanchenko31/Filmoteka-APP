@@ -1,0 +1,144 @@
+.bodyIsHidden{
+  overflow: hidden;
+}
+.backdrop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background:var(--color-backdrop);
+  transition: all 1s ease-in;
+
+  @media screen and(max-width:767px) {
+    padding: 2rem;
+  }
+  .modalWindow {   
+    position: relative;
+    width: 28rem;
+    height: 90vh;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+
+    @media screen and(min-width:768px)and(max-width:1023px) {
+      padding: 6rem 7.5rem 0rem 7.5rem;
+      height: 100vh;
+    }
+    background-color: var(--color-white);
+    z-index: 999;
+    overflow-y: scroll;
+
+    @media screen and(min-width:768px)and(max-width:1023px) {
+      width: 76.8rem;
+      display: flex;
+      height: 80vh;
+    }
+      
+    @media screen and(min-width:1024px) {
+      width: 88.2rem;
+      display: flex;
+      margin-top: 10rem;
+      height: 80vh;
+    }
+    .close{
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: transparent;
+      border: none;
+      background-image: url(..//images/close.svg);
+      background-repeat: no-repeat;
+      width: 3rem;
+      height: 3rem;
+    }
+    img{
+      width: 100%;
+      border-radius: 0.5rem;
+      display:inline-block;
+      margin-bottom: 3rem;
+
+      @media screen and(min-width:768px)and(max-width:1023px) {
+        margin-right: 3rem;
+        max-width: 29.4rem;
+      }
+
+      @media screen and(min-width:1024px){
+        margin-right: 3rem;
+        max-width: 39.6rem;
+        margin-bottom: 0;
+      }
+    }
+    .title{
+      margin-bottom: 2rem;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 2rem;
+      line-height: 2.3rem;
+      color: var(--color-black);
+    }
+      .description-movie{
+      display: flex;
+      line-height: 2.6rem;
+      margin-bottom: 2rem;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.2rem;
+      .description{
+        margin-right: 4rem;   
+        color: var(--color-descriptionMovie);
+      }
+      ul{
+        color: var(--color-black);
+        .vote{
+          padding: 0.1rem 0.9rem;
+          background-color: var(--borderOrange-color);
+          border-radius: 0.5rem;
+          color: var(--color-white);
+        }
+        .geners{
+          line-height: 1.6rem;
+        }
+      }
+    }
+    h2 {
+      margin-bottom: 1rem;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      text-transform: uppercase;
+      color: var(--color-black);
+    }
+    .movie-discripsh-content{
+      margin-bottom: 2rem;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.2rem;
+      line-height: 2rem;
+      color:var(--color-black);
+    }
+    .button{
+      display: flex;
+      justify-content: center;
+      text-transform: uppercase;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 1.2rem;
+      line-height: 1.6rem;
+      .item{
+        border-radius: 5px;
+      }
+      .item button{
+        padding: 1.3rem 0.8rem;
+        background-color: transparent;
+        border: 0.1rem solid var(--color-black);
+        border-radius: 0.5rem;
+        text-transform: uppercase;
+      }
+      .item:first-child{
+        margin-right: 1.5rem;
+      }
+     
+    }
+  }
+}

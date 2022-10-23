@@ -30,7 +30,7 @@ function inputQuerySearch() {
 function movieSearchAPI(page) {
   queryAPI.generalAPI(page).then(value => {   
     results = value.results;
-      addKeyGeners(results);
+    addKeyGeners(results);
   })  
 }
 

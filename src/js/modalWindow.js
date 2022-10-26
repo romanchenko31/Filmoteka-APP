@@ -20,7 +20,7 @@ function modalShow() {
       divModalWindow.parentElement.classList.add('backdrop');
       body.classList.add('bodyIsHidden');
       divModalWindow.innerHTML = marcupModalWindow;
-      
+      popupButtons(id);
     } 
   });
 }

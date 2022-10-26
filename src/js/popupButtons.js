@@ -32,7 +32,6 @@ function popupButtons(id) {
   })
 }
 
-
 function pressButtonWatched(watchedMoviesIds,queueMoviesIds, targetButton, id, buttonQueue, buttonWatched) {
   if (targetButton === buttonWatched) {
     if (!watchedMoviesIds.includes(id)) {
@@ -80,6 +79,5 @@ function pressButtonQueue(watchedMoviesIds, queueMoviesIds, targetButton, id, bu
     localStorage.setItem('queueMoviesIds', JSON.stringify(queueMoviesIds)); 
   } 
 }
-
 
 export { popupButtons };

@@ -1,3 +1,7 @@
+import { localStorageMovies } from '..//js/getLocalStorageMoviesIds';
+const getQueueMovies = new localStorageMovies;
+const getWatchedMovies = new localStorageMovies;
+
 function popupButtons(id) {
   let watchedMoviesIds = [];
   let queueMoviesIds = [];
@@ -5,30 +9,29 @@ function popupButtons(id) {
   const buttonWatched = document.querySelector('.watched');
   const buttons = document.querySelector('.button');
 
-  if (localStorage.getItem('queueMoviesIds')) {
-    queueMoviesIds = JSON.parse(localStorage.getItem('queueMoviesIds'));
+  if (getQueueMovies.QueueMoviesIds) {
+    queueMoviesIds = JSON.parse(getQueueMovies.QueueMoviesIds);
   }
-  
+
   if (queueMoviesIds.includes(id)) {
     buttonQueue.classList.add('clicks');
     buttonQueue.textContent = 'REMOVE FROM QUEUE';
   } 
-
-  if (localStorage.getItem('watchedMoviesIds')) {
-    watchedMoviesIds = JSON.parse(localStorage.getItem('watchedMoviesIds'));
+ 
+  if (getWatchedMovies.WatchedMoviesIds) {
+    watchedMoviesIds = JSON.parse(getWatchedMovies.WatchedMoviesIds);
   }
-  
+   console.log(getWatchedMovies.WatchedMoviesIds);
   if (watchedMoviesIds.includes(id)) {
     buttonWatched.classList.add('clicks');
     buttonWatched.textContent = 'REMOVE FROM WATCHED';
   }      
-  console.log(watchedMoviesIds);
+
   buttons.addEventListener('click', (e) => {
-    let targetButton = e.target;
-    
-    pressButtonWatched(watchedMoviesIds,queueMoviesIds, targetButton, id, buttonQueue, buttonWatched);
-    pressButtonQueue(watchedMoviesIds, queueMoviesIds, targetButton, id, buttonQueue, buttonWatched)
-         
+    let targetButton = e.target;  
+    pressButtonWatched(watchedMoviesIds, queueMoviesIds, targetButton, id, buttonQueue, buttonWatched);
+    console.log(watchedMoviesIds);
+    pressButtonQueue(watchedMoviesIds, queueMoviesIds, targetButton, id, buttonQueue, buttonWatched)      
   })
 }
 
@@ -46,13 +49,13 @@ function pressButtonWatched(watchedMoviesIds,queueMoviesIds, targetButton, id, b
       if (value === id) {
         const removeIdMovies = queueMoviesIds.indexOf(value);
         queueMoviesIds.splice(removeIdMovies, 1);
-        localStorage.setItem('queueMoviesIds', JSON.stringify(queueMoviesIds));     
+        getQueueMovies.QueueMoviesIds = queueMoviesIds;     
         buttonQueue.classList.toggle('clicks');
         buttonQueue.textContent = 'ADD TO QUEUE';
       }
     })
     buttonWatched.classList.toggle('clicks');
-    localStorage.setItem('watchedMoviesIds', JSON.stringify(watchedMoviesIds)); 
+    getWatchedMovies.WatchedMoviesIds = watchedMoviesIds; 
   }
 }
 
@@ -70,13 +73,13 @@ function pressButtonQueue(watchedMoviesIds, queueMoviesIds, targetButton, id, bu
       if (value === id) {
         const removeIdMovies = watchedMoviesIds.indexOf(id);
         watchedMoviesIds.splice(removeIdMovies, 1);
-        localStorage.setItem('watchedMoviesIds', JSON.stringify(watchedMoviesIds));     
+        getWatchedMovies.WatchedMoviesIds = watchedMoviesIds;    
         buttonWatched.classList.toggle('clicks');
         buttonWatched.textContent = 'ADD TO WATCHED';
       }
     })
     buttonQueue.classList.toggle('clicks');
-    localStorage.setItem('queueMoviesIds', JSON.stringify(queueMoviesIds)); 
+    getQueueMovies.QueueMoviesIds = queueMoviesIds; 
   } 
 }
 

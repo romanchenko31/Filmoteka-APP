@@ -6,10 +6,6 @@ const divModalWindow = document.querySelector('.modalWindow');
 const setIdModalWindow = new modalWindow;
 const body = document.querySelector('body');
 
-
-
-
-
 function modalShow() {
   filmList.addEventListener('click', async (e) => {  
     if (e.target.closest('li')) {

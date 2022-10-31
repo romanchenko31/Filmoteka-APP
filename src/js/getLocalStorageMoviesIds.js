@@ -1,16 +1,16 @@
-class localStorageMovies{
-    get WatchedMoviesIds() {
+class MovieService{
+    get getWatchedMovieIds() {
         return localStorage.getItem('watchedMoviesIds');
     }
-    set WatchedMoviesIds(watchedMoviesIds) {
+    set setMovieToWatched(watchedMoviesIds) {
       localStorage.setItem('watchedMoviesIds', JSON.stringify(watchedMoviesIds));
     }
-    get QueueMoviesIds() {
+    get getQueuedMovieIds() {
         return localStorage.getItem('queueMoviesIds');
     }
-    set QueueMoviesIds(queueMoviesIds) {
+    set setMovieToQueue(queueMoviesIds) {
         localStorage.setItem('queueMoviesIds', JSON.stringify(queueMoviesIds)); 
     }
 }
 
-export { localStorageMovies };
+export { MovieService };

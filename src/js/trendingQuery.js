@@ -5,7 +5,6 @@ import {modalShow, modalHidden} from '..//js/modalWindow';
 const trendingAPI = new trendingMovies(); 
 const filmList = document.querySelector('.film-list');
 
-
 let results = [];
 let genres = [];
 let arrGenresName = [];
@@ -19,8 +18,6 @@ function movieTrendAPI(page) {
     modalHidden();
 });
 }
-
-
 
 function addKeyGeners(results) {
   getGenresApi().then(value => {

@@ -1,6 +1,7 @@
 import { filmList } from "./trendingQuery";
 import { modalWindow } from '..//js/getModalWindowAPI';
 import modalWindowHendelbar from '..//template/modalWindow.hbs';
+import { popupButtons } from './popupButtons';
 const divModalWindow = document.querySelector('.modalWindow');
 const setIdModalWindow = new modalWindow;
 const body = document.querySelector('body');
@@ -15,6 +16,7 @@ function modalShow() {
       divModalWindow.parentElement.classList.add('backdrop');
       body.classList.add('bodyIsHidden');
       divModalWindow.innerHTML = marcupModalWindow;
+      popupButtons(id);
     } 
   });
 }

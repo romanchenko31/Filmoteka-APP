@@ -1,16 +1,17 @@
 import { reloadPagination, addStyleCurrentButton} from '..//js/pagination';
-import {trendingAPI, movieTrendAPI, addKeyGeners} from '..//js/trendingQuery';
-import querySearchAPI from '..//js/queryMoviesApi.js';
+import {movieTrendAPI, addKeyGeners} from '..//js/trendingQuery';
+import { MovieApiService } from './MovieApiService';
+
 const input = document.querySelector('#search');
-const queryAPI = new querySearchAPI();
+const movieAPIServis = new MovieApiService; 
 const debounce = require('debounce');
 
 function inputQuerySearch() {
   input.addEventListener('input', debounce(((e) => {
-    queryAPI.querySearch = e.target.value; 
-    if (queryAPI.querySearch !== '') {
+    movieAPIServis.querySearch = e.target.value; 
+    if (movieAPIServis.querySearch !== '') {
       let currentPage;
-      if (queryAPI.page !== 1) {
+      if (movieAPIServis.page !== 1) {
         currentPage = 1;     
         movieSearchAPI(currentPage);
         reloadPagination(); 
@@ -28,7 +29,7 @@ function inputQuerySearch() {
 } 
 
 function movieSearchAPI(page) {
-  queryAPI.generalAPI(page).then(value => {   
+  movieAPIServis.getMoviesByQuery(page).then(value => {   
     results = value.results;
     addKeyGeners(results);
   })  
@@ -36,4 +37,4 @@ function movieSearchAPI(page) {
 
 inputQuerySearch();
 
-export { movieSearchAPI, queryAPI };
+export { movieSearchAPI };

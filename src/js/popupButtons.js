@@ -1,4 +1,4 @@
-import { MovieService } from '..//js/getLocalStorageMoviesIds';
+import { MovieService } from './MovieService';
 import { renderContentLibrary } from './contentLibrary';
 
 const movieService = new MovieService;
@@ -25,14 +25,15 @@ function popupButtons(id) {
   if (watchedMoviesIds.includes(id)) {
     buttonWatched.classList.add('clicks');
     buttonWatched.textContent = 'REMOVE FROM WATCHED';
-  }      
+  } 
+  
   buttonWatched.addEventListener('click', () => {
     pressButtonWatched(watchedMoviesIds, queueMoviesIds, id, buttonQueue, buttonWatched);
-  })
+  });
+
   buttonQueue.addEventListener('click', () => {
     pressButtonQueue(watchedMoviesIds, queueMoviesIds, id, buttonQueue, buttonWatched);
-  })
-  
+  });
 }
 
 function pressButtonWatched(watchedMoviesIds,queueMoviesIds, id, buttonQueue, buttonWatched) {
@@ -48,11 +49,11 @@ function pressButtonWatched(watchedMoviesIds,queueMoviesIds, id, buttonQueue, bu
     if (value === id) {
       const removeIdMovies = queueMoviesIds.indexOf(value);
       queueMoviesIds.splice(removeIdMovies, 1);
-      movieService.setMovieToQueue = queueMoviesIds;     
+      movieService.setMovieToQueue = queueMoviesIds;
       buttonQueue.classList.toggle('clicks');
       buttonQueue.textContent = 'ADD TO QUEUE';
     }
-  })
+  });
   buttonWatched.classList.toggle('clicks');
   movieService.setMovieToWatched = watchedMoviesIds;
   if (location.pathname === "/library.html/watched") {
@@ -71,22 +72,22 @@ function pressButtonQueue(watchedMoviesIds, queueMoviesIds, id, buttonQueue, but
     const indexRemoveMoviesId = queueMoviesIds.indexOf(id);
     queueMoviesIds.splice(indexRemoveMoviesId, 1);
   }
-    watchedMoviesIds.map(value => {
-      if (value === id) {
-        const removeIdMovies = watchedMoviesIds.indexOf(id);
-        watchedMoviesIds.splice(removeIdMovies, 1);
-        movieService.setMovieToWatched = watchedMoviesIds;    
-        buttonWatched.classList.toggle('clicks');
-        buttonWatched.textContent = 'ADD TO WATCHED';
-      }
-    })
-    buttonQueue.classList.toggle('clicks');
-    movieService.setMovieToQueue = queueMoviesIds; 
-    if (location.pathname === "/library.html/watched") {
-      renderContentLibrary(watchedMoviesIds);
-    } else if(location.pathname === "/library.html/queue"){
-      renderContentLibrary(queueMoviesIds);
-    }  
+  watchedMoviesIds.map(value => {
+    if (value === id) {
+      const removeIdMovies = watchedMoviesIds.indexOf(id);
+      watchedMoviesIds.splice(removeIdMovies, 1);
+      movieService.setMovieToWatched = watchedMoviesIds;
+      buttonWatched.classList.toggle('clicks');
+      buttonWatched.textContent = 'ADD TO WATCHED';
+    }
+  });
+  buttonQueue.classList.toggle('clicks');
+  movieService.setMovieToQueue = queueMoviesIds; 
+  if (location.pathname === "/library.html/watched") {
+    renderContentLibrary(watchedMoviesIds);
+  } else if(location.pathname === "/library.html/queue"){
+    renderContentLibrary(queueMoviesIds);
+  }  
 }
 
 export { popupButtons };

@@ -1,8 +1,8 @@
-import trendingMovies from '..//js/trendMoviesAPI';
-import getGenresApi from '..//js/genersApi.js';
+import {MovieApiService} from './MovieApiService';
 import img from '..//template/img.hbs';
 import {modalShow, modalHidden} from '..//js/modalWindow';
-const trendingAPI = new trendingMovies(); 
+
+const movieAPIServis = new MovieApiService; 
 const filmList = document.querySelector('.film-list');
 
 let results = [];
@@ -11,7 +11,7 @@ let arrGenresName = [];
 let currentPage = 1;
 
 function movieTrendAPI(page) {
-  trendingAPI.trendMovies(page).then(value => { 
+  movieAPIServis.getTrendingMovies(page).then(value => { 
     results = [...value.results];  
     addKeyGeners(results);
     modalShow();
@@ -20,7 +20,7 @@ function movieTrendAPI(page) {
 }
 
 function addKeyGeners(results) {
-  getGenresApi().then(value => {
+  movieAPIServis.getMoviesGenres().then(value => {
     genres = [...value.genres];
     results.map(result => {
       genres.map(genre => {
@@ -53,4 +53,4 @@ function addKeyYear(result) {
 
 movieTrendAPI(currentPage);
 
-export { movieTrendAPI, trendingAPI, addKeyGeners, filmList};
+export { movieTrendAPI, addKeyGeners, filmList};

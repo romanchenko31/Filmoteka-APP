@@ -1,7 +1,9 @@
-import {movieTrendAPI, trendingAPI} from '..//js/trendingQuery.js';
-import {movieSearchAPI, queryAPI} from '..//js/searchQuery';
-const form = document.querySelector('.form-button');
+import {movieTrendAPI} from '..//js/trendingQuery.js';
+import { movieSearchAPI } from '..//js/searchQuery';
+import { MovieApiService } from './MovieApiService';
 
+const movieAPIServis = new MovieApiService; 
+const form = document.querySelector('.form-button');
 
 //START variable mobile pagination
 const amountPagesPagination = 5;
@@ -101,7 +103,7 @@ function phonePagination() {
         currentPage = firstPage;
         addStyleCurrentButton();
       }
-      if (queryAPI.querySearch === '') {
+      if (movieAPIServis.querySearch === '') {
         movieTrendAPI(currentPage);  
       } else {
         movieSearchAPI(currentPage);
@@ -134,7 +136,7 @@ function  desktopPagination() {
         currentPage = firstPagePagination;
       }  
       
-      if (queryAPI.querySearch === '' &&  e.target.className !== 'secondMore' && e.target.className !== 'moreOne') {
+      if (movieAPIServis.querySearch === '' &&  e.target.className !== 'secondMore' && e.target.className !== 'moreOne') {
         movieTrendAPI(currentPage);  
       } else if(e.target.className !== 'secondMore' && e.target.className !== 'moreOne'){
           movieSearchAPI(currentPage);

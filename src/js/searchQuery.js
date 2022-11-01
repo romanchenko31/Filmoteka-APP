@@ -30,8 +30,8 @@ function inputQuerySearch() {
 
 function movieSearchAPI(page) {
   movieAPIServis.getMoviesByQuery(page).then(value => {   
-    results = value.results;
-    addKeyGeners(results);
+    result = value.results;
+    addKeyGeners(result);
   })  
 }
 

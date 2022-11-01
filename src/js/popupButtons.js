@@ -56,9 +56,9 @@ function pressButtonWatched(watchedMoviesIds,queueMoviesIds, id, buttonQueue, bu
   });
   buttonWatched.classList.toggle('clicks');
   movieService.setMovieToWatched = watchedMoviesIds;
-  if (location.pathname === "/library.html/watched") {
+  if (location.hash === "#watched") {
     renderContentLibrary(watchedMoviesIds);
-  } else if(location.pathname === "/library.html/queue"){
+  } else if(location.hash === "#queue"){
     renderContentLibrary(queueMoviesIds);
   }
 }
@@ -83,9 +83,9 @@ function pressButtonQueue(watchedMoviesIds, queueMoviesIds, id, buttonQueue, but
   });
   buttonQueue.classList.toggle('clicks');
   movieService.setMovieToQueue = queueMoviesIds; 
-  if (location.pathname === "/library.html/watched") {
+  if (location.hash === "#watched") {
     renderContentLibrary(watchedMoviesIds);
-  } else if(location.pathname === "/library.html/queue"){
+  } else if(location.hash === "#queue"){
     renderContentLibrary(queueMoviesIds);
   }  
 }

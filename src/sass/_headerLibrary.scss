@@ -43,6 +43,11 @@
   .button-library {
     display: flex;
     justify-content: center;
+    .clicks {
+      background-color: var(--borderOrange-color);
+      color: var(--color-white);
+      border: none;
+    }
     button {
       font-style: normal;
       font-weight: 500;

@@ -11,17 +11,21 @@ if (location.pathname === "/library.html") {
   let arrayQueueId = JSON.parse(movieService.getQueuedMovieIds);
   const buttonWatched = document.querySelector('#watched');
   const buttonQueue = document.querySelector('#queue');
- 
+  buttonWatched.classList.add('clicks');
   buttonWatched.addEventListener('click', (e) => {
     history.pushState(null, null, "/library.html/watched");
     arrayWatchedId = JSON.parse(movieService.getWatchedMovieIds);
     renderContentLibrary(arrayWatchedId);
+    buttonQueue.classList.remove('clicks');
+    buttonWatched.classList.add('clicks');
   });
   
   buttonQueue.addEventListener('click', (e) => {
     history.pushState(null, null, "/library.html/queue");
     arrayQueueId = JSON.parse(movieService.getQueuedMovieIds);
     renderContentLibrary(arrayQueueId);
+    buttonWatched.classList.remove('clicks');
+    buttonQueue.classList.add('clicks');
   });
   renderContentLibrary(arrayWatchedId);
   history.pushState(null, null, "/library.html/watched");

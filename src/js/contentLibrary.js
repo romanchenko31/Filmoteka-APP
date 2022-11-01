@@ -13,7 +13,7 @@ if (location.pathname === "/library.html") {
   const buttonQueue = document.querySelector('#queue');
   buttonWatched.classList.add('clicks');
   buttonWatched.addEventListener('click', (e) => {
-    history.pushState(null, null, "/library.html/watched");
+    history.pushState(null, null, "/library.html#watched");
     arrayWatchedId = JSON.parse(movieService.getWatchedMovieIds);
     renderContentLibrary(arrayWatchedId);
     buttonQueue.classList.remove('clicks');
@@ -21,14 +21,14 @@ if (location.pathname === "/library.html") {
   });
   
   buttonQueue.addEventListener('click', (e) => {
-    history.pushState(null, null, "/library.html/queue");
+    history.pushState(null, null, "/library.html#queue");
     arrayQueueId = JSON.parse(movieService.getQueuedMovieIds);
     renderContentLibrary(arrayQueueId);
     buttonWatched.classList.remove('clicks');
     buttonQueue.classList.add('clicks');
   });
   renderContentLibrary(arrayWatchedId);
-  history.pushState(null, null, "/library.html/watched");
+  history.pushState(null, null, "/library.html#watched");
 }
  
 function renderContentLibrary(moviesArray) {
